@@ -1,16 +1,33 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # Project wizard (creation flow)
+  get  "projects/wizard/choose",   to: "projects/wizard#choose",     as: :wizard_choose
+  post "projects/wizard/choose",   to: "projects/wizard#save_choose", as: :wizard_save_choose
+  get  "projects/wizard/step1",    to: "projects/wizard#step1",      as: :wizard_step1
+  post "projects/wizard/step1",    to: "projects/wizard#save_step1"
+  get  "projects/wizard/step2",    to: "projects/wizard#step2",      as: :wizard_step2
+  post "projects/wizard/step2",    to: "projects/wizard#save_step2"
+  get  "projects/wizard/step3",    to: "projects/wizard#step3",      as: :wizard_step3
+  post "projects/wizard/step3",    to: "projects/wizard#save_step3"
+  get  "projects/wizard/step4",    to: "projects/wizard#step4",      as: :wizard_step4
+  post "projects/wizard/generate", to: "projects/wizard#generate",   as: :wizard_generate
+
+  resources :projects do
+    resources :rooms,     only: [:index, :new, :create]
+    resources :documents, only: [:index, :new, :create]
+  end
+
+  resources :rooms, only: [:show, :edit, :update, :destroy] do
+    resources :work_items, only: [:new, :create]
+  end
+
+  resources :work_items, only: [:edit, :update, :destroy]
+  resources :documents,  only: [:destroy]
+
+  resources :work_categories, only: [:index, :show]
+  resources :materials,       only: [:index, :show]
+
   get "up" => "rails/health#show", as: :rails_health_check
-
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
-  # Defines the root path route ("/")
-  # root "posts#index"
 end

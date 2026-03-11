@@ -1,0 +1,56 @@
+<%
+category_icons = {
+  "maconnerie"  => "🏗️",
+  "plomberie"   => "🔧",
+  "electricite" => "⚡",
+  "menuiserie"  => "🚪",
+  "peinture"    => "🖌️",
+  "carrelage"   => "◻️",
+  "isolation"   => "🧱",
+  "chauffage"   => "🌡️"
+}
+%>
+
+<div class="container py-4" style="max-width: 800px;">
+  <%= link_to "← Catégories", work_categories_path, class: "od-back-link" %>
+
+  <div class="d-flex align-items-center gap-3 mb-4">
+    <span style="font-size: 2rem; line-height: 1;"><%= category_icons[@work_category.slug] || "🔨" %></span>
+    <div class="od-page-title mb-0"><%= @work_category.name %></div>
+  </div>
+
+  <% if @materials.any? %>
+    <div class="od-table-wrap">
+      <table class="od-table">
+        <thead>
+          <tr>
+            <th>Marque</th>
+            <th>Référence</th>
+            <th>Unité</th>
+            <th class="text-end">Prix HT</th>
+            <th class="text-end">TVA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @materials.each do |material| %>
+            <tr>
+              <td style="font-weight: 600;"><%= material.brand %></td>
+              <td style="color: #9B9588;"><%= material.reference %></td>
+              <td><%= material.unit %></td>
+              <td class="text-end">
+                <%= number_to_currency(material.public_price_exVAT, unit: "€", format: "%n %u",
+                      separator: ",", delimiter: "\u202F") %>
+              </td>
+              <td class="text-end"><%= material.vat_rate ? "#{material.vat_rate}%" : "—" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="text-center py-5"
+         style="border: 1px solid #E8E4DC; border-radius: 10px; background: #fff; color: #9B9588; font-size: 0.9rem;">
+      Aucun matériau dans cette catégorie.
+    </div>
+  <% end %>
+</div>

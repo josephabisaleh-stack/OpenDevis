@@ -1,0 +1,23 @@
+<%= simple_form_for [@project, @document] do |f| %>
+  <%= f.error_notification class: "alert", style: "background:#F8D7DA;color:#842029;border:1px solid #f5c2c7;border-radius:8px;padding:0.75rem 1rem;margin-bottom:1rem;font-size:0.9rem;" %>
+
+  <div class="row g-3">
+    <div class="col-md-6">
+      <%= f.input :file_name, label: "Nom du fichier", placeholder: "ex. Devis plomberie" %>
+    </div>
+    <div class="col-md-6">
+      <%= f.input :file_type, as: :select,
+            collection: %w[PDF Word Excel Image Autre],
+            include_blank: "— Type —",
+            label: "Type de fichier" %>
+    </div>
+    <div class="col-12">
+      <%= f.input :file_url, label: "URL du fichier", placeholder: "https://..." %>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center gap-2 mt-4">
+    <%= f.button :submit, class: "btn btn-dark-od" %>
+    <%= link_to "Annuler", @project, class: "btn btn-ghost-od" %>
+  </div>
+<% end %>
