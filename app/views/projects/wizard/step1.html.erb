@@ -81,6 +81,21 @@
   .btn-send-chat.active {
     background: #2C2A25; color: #fff; border-color: #2C2A25; cursor: pointer;
   }
+  .pdf-dropzone {
+    border: 2px dashed #E8E4DC;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    color: #9B9588;
+  }
+  .pdf-dropzone:hover, .pdf-dropzone.dragover {
+    border-color: #2C2A25;
+    background: #F0EDE8;
+  }
+  .pdf-dropzone .upload-icon { font-size: 1.8rem; margin-bottom: 0.4rem; }
+
   /* Pulse fallback when getUserMedia is denied */
   .mic-btn canvas[data-pulse="true"] {
     animation: waveform-pulse 0.8s ease-in-out infinite alternate;
@@ -142,17 +157,49 @@
       <div data-url-analyze-target="status" hidden></div>
     </div>
 
-    <div data-import-mode-target="panel" data-mode="pdf" hidden class="import-panel text-center py-3">
-      <div style="color: #9B9588; font-size: 0.9rem;">
-        📄 Déposez votre document ici<br>
-        <span style="font-size: 0.8rem;">
-          <% if @project_type.in?(%w[construction extension]) %>
-            PLU, plans, etc.
-          <% else %>
-            Fonctionnalité IA à venir
-          <% end %>
-        </span>
+    <div data-import-mode-target="panel" data-mode="pdf" hidden class="import-panel"
+         data-controller="pdf-upload"
+         data-pdf-upload-endpoint-value="<%= wizard_analyze_pdf_path %>">
+
+      <div class="pdf-dropzone"
+           data-pdf-upload-target="dropzone"
+           data-action="dragover->pdf-upload#dragover dragleave->pdf-upload#dragleave drop->pdf-upload#drop click->pdf-upload#openPicker">
+        <div class="upload-icon">📄</div>
+        <div class="fw-semibold" style="font-size: 0.9rem; color: #2C2A25;">Glissez votre PDF ici</div>
+        <div style="font-size: 0.8rem; margin-top: 0.2rem;">
+          ou <span style="text-decoration: underline;">cliquez pour choisir un fichier</span>
+        </div>
+        <div style="font-size: 0.75rem; color: #9B9588; margin-top: 0.3rem;">PDF uniquement · max 10 Mo</div>
       </div>
+
+      <input type="file" accept=".pdf,application/pdf"
+             data-pdf-upload-target="fileInput"
+             data-action="change->pdf-upload#fileSelected"
+             hidden>
+
+      <%# Filename + red X — visible only when a file is selected %>
+      <div class="d-flex align-items-center gap-1 mt-2 overflow-hidden" style="min-height: 22px; display: none !important;"
+           data-pdf-upload-target="fileRow">
+        <span data-pdf-upload-target="filename"
+              class="small text-muted text-truncate" style="max-width: 220px;"></span>
+        <button type="button" class="btn p-0 lh-1" style="color: #dc3545; font-size: 1.1rem; flex-shrink: 0;"
+                data-action="click->pdf-upload#remove"
+                title="Retirer le fichier">
+          &times;
+        </button>
+      </div>
+
+      <%# Analyser button — always visible, disabled until a file is selected %>
+      <div class="mt-2">
+        <button type="button" disabled
+                style="border-radius: 8px; padding: 0.35rem 0.85rem; font-size: 0.9rem; font-weight: 500; white-space: nowrap; background: #E8E4DC; color: #9B9588; border: 1px solid #E8E4DC; cursor: not-allowed;"
+                data-pdf-upload-target="analyzeBtn"
+                data-action="click->pdf-upload#analyze">
+          Analyser ✨
+        </button>
+      </div>
+
+      <div data-pdf-upload-target="status" hidden></div>
     </div>
 
     <div data-import-mode-target="panel" data-mode="chat" hidden class="import-panel"

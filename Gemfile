@@ -48,6 +48,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "pundit"
 gem "faraday"
+gem "pdf-reader"
 
 group :development, :test do
   gem "dotenv-rails"

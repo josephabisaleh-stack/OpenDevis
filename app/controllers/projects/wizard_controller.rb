@@ -109,6 +109,19 @@ module Projects
       render json: { success: false, error: friendly_error(e.message) }, status: :unprocessable_entity
     end
 
+    # ── PDF analyzer – AJAX endpoint ─────────────────────────────────────────
+    def analyze_pdf
+      file = params[:file]
+      raise "Aucun fichier reçu."                  unless file
+      raise "Le fichier doit être un PDF."          unless file.content_type&.include?("pdf")
+      raise "Fichier trop volumineux (max 10 Mo)."  if file.size > 10.megabytes
+
+      result = ::PdfPropertyAnalyzer.new(file.tempfile).analyze
+      render json: { success: true, data: result }
+    rescue => e
+      render json: { success: false, error: friendly_error(e.message) }, status: :unprocessable_entity
+    end
+
     # ── Step 4 – Recap + generate ─────────────────────────────────────────────
     def step4
       @project          = find_wizard_project || (redirect_to(wizard_step1_path) && return)
@@ -161,6 +174,8 @@ module Projects
         "Impossible d'analyser le contenu de cette page. Remplissez les informations manuellement."
       when /getaddrinfo/, /SocketError/, /connection/i
         "Impossible de se connecter à ce site. Vérifiez que le lien est correct."
+      when /lisible/, /corrompu/, /illisible/, /volumineux/, /Aucun fichier/, /doit être un PDF/
+        message
       else
         "Ce lien n'a pas pu être analysé. Remplissez les informations manuellement."
       end
