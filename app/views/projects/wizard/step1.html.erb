@@ -114,14 +114,8 @@
       </div>
 
       <div class="row g-3">
-        <div class="col-12">
-          <div class="field-label">Type de bien</div>
-          <input type="text" name="project[property_url]" class="form-control"
-                 placeholder="Appartement, maison, studio..."
-                 value="<%= @project.property_url %>">
-        </div>
         <div class="col-md-6">
-          <div class="field-label">Surface totale (m²)</div>
+          <div class="field-label">Surface totale du bien (m²)</div>
           <%= f.number_field :total_surface_sqm, class: "form-control", placeholder: "ex. 78", step: 0.5 %>
         </div>
         <div class="col-md-6">
