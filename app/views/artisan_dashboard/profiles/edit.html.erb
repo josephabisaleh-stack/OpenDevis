@@ -1,11 +1,11 @@
 <div style="max-width: 600px; margin: 0 auto; padding: 32px 24px;">
   <%= link_to "← Retour au tableau de bord", artisan_dashboard_root_path,
-        style: "color: #9B9588; text-decoration: none; font-size: 0.9rem;" %>
+        style: "color: #4A4640; text-decoration: none; font-size: 0.9rem;" %>
 
   <h2 style="font-weight: 700; color: #2C2A25; margin-top: 16px; margin-bottom: 4px;">Mon profil</h2>
-  <p style="color: #9B9588; font-size: 0.9rem; margin-bottom: 28px;">Mettez à jour vos informations professionnelles.</p>
+  <p style="color: #4A4640; font-size: 0.9rem; margin-bottom: 28px;">Mettez à jour vos informations professionnelles.</p>
 
-  <div style="background: #fff; border: 1px solid #E8E4DC; border-radius: 12px; padding: 28px;">
+  <div style="background: #fff; border: 1px solid #C8C4BC; border-radius: 12px; padding: 28px;">
     <%= form_with model: @artisan, url: artisan_dashboard_profile_path, method: :patch do |f| %>
       <% if @artisan.errors.any? %>
         <div style="background: #F8D7DA; color: #842029; border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; font-size: 0.88rem;">
@@ -15,7 +15,7 @@
         </div>
       <% end %>
 
-      <% field_style = "width: 100%; border: 1px solid #E8E4DC; border-radius: 8px; padding: 10px 14px; font-size: 0.93rem; box-sizing: border-box; outline: none; background: #fff;" %>
+      <% field_style = "width: 100%; border: 1px solid #C8C4BC; border-radius: 8px; padding: 10px 14px; font-size: 0.93rem; box-sizing: border-box; outline: none; background: #fff;" %>
       <% label_style = "font-size: 0.83rem; font-weight: 600; color: #2C2A25; display: block; margin-bottom: 6px;" %>
 
       <div style="margin-bottom: 16px;">
@@ -45,7 +45,7 @@
 
       <div style="margin-bottom: 24px;">
         <label style="<%= label_style %>">Corps de métier</label>
-        <p style="font-size: 0.82rem; color: #9B9588; margin: 0 0 12px;">
+        <p style="font-size: 0.82rem; color: #4A4640; margin: 0 0 12px;">
           Sélectionnez les catégories de travaux que vous réalisez.
         </p>
         <% category_icons = {
@@ -56,8 +56,8 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px;">
           <% @work_categories.each do |cat| %>
             <% selected = @artisan.work_category_ids.include?(cat.id) %>
-            <label style="display: flex; align-items: center; gap: 10px; border: 1.5px solid <%= selected ? "#2C2A25" : "#E8E4DC" %>;
-                          border-radius: 8px; padding: 10px 14px; cursor: pointer; background: <%= selected ? "#F5F3EF" : "#fff" %>;
+            <label style="display: flex; align-items: center; gap: 10px; border: 1.5px solid <%= selected ? "#2C2A25" : "#C8C4BC" %>;
+                          border-radius: 8px; padding: 10px 14px; cursor: pointer; background: <%= selected ? "#EDEAE4" : "#fff" %>;
                           transition: border-color 0.15s;">
               <%= check_box_tag "artisan[work_category_ids][]", cat.id, selected,
                     id: "cat_#{cat.id}",

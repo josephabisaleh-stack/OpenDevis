@@ -1,7 +1,7 @@
 <% content_for :head do %>
 <style>
   .import-mode-btn {
-    border: 1px solid #E8E4DC;
+    border: 1px solid #C8C4BC;
     border-radius: 10px;
     background: #fff;
     padding: 1rem 1.4rem;
@@ -15,15 +15,15 @@
   .import-mode-btn.active { border-color: #2C2A25; background: #F0EDE8; }
 
   .import-panel {
-    border: 1px solid #E8E4DC;
+    border: 1px solid #C8C4BC;
     border-radius: 10px;
-    background: #FAFAF7;
+    background: #FFFFFF;
     padding: 1.25rem;
     margin-top: 0.75rem;
   }
 
   .field-section {
-    border: 1px solid #E8E4DC;
+    border: 1px solid #C8C4BC;
     border-radius: 10px;
     padding: 1.5rem;
     background: #fff;
@@ -31,7 +31,7 @@
   .field-label { font-size: 0.85rem; font-weight: 600; color: #2C2A25; margin-bottom: 0.3rem; }
   .field-label .required { color: #C25E4A; margin-left: 2px; }
   .form-control, .form-select {
-    border-color: #E8E4DC;
+    border-color: #C8C4BC;
     border-radius: 8px;
     font-size: 0.95rem;
   }
@@ -51,7 +51,7 @@
     display: block;
     text-align: center;
     padding: 0.65rem 0.75rem;
-    border: 1.5px solid #E8E4DC;
+    border: 1.5px solid #C8C4BC;
     border-radius: 8px;
     cursor: pointer;
     font-size: 0.9rem;
@@ -74,7 +74,7 @@
     right: 0;
     z-index: 10;
     background: #fff;
-    border: 1px solid #E8E4DC;
+    border: 1px solid #C8C4BC;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(44,42,37,0.1);
     margin-top: 4px;
@@ -118,8 +118,8 @@
   .chat-msg--user      { background: #2C2A25; color: #fff; align-self: flex-end; }
   .chat-msg--assistant { background: #F0EDE8; color: #2C2A25; align-self: flex-start; }
   .mic-btn {
-    border: 1px solid #E8E4DC; border-left: 0; border-radius: 0 8px 8px 0;
-    background: #fff; color: #9B9588; display: flex; align-items: center; justify-content: center;
+    border: 1px solid #C8C4BC; border-left: 0; border-radius: 0 8px 8px 0;
+    background: #fff; color: #4A4640; display: flex; align-items: center; justify-content: center;
     width: 40px; transition: background 0.15s, color 0.15s;
   }
   .mic-btn:hover { background: #F0EDE8; color: #2C2A25; }
@@ -130,8 +130,8 @@
     border-radius: 8px 0 0 8px; line-height: 1.5;
   }
   .btn-send-chat {
-    border: 1px solid #E8E4DC; border-radius: 8px;
-    background: #fff; color: #9B9588;
+    border: 1px solid #C8C4BC; border-radius: 8px;
+    background: #fff; color: #4A4640;
     padding: 0.375rem 0.85rem; font-size: 0.9rem; font-weight: 500;
     transition: background 0.15s, color 0.15s, border-color 0.15s;
     cursor: default; white-space: nowrap;
@@ -140,13 +140,13 @@
     background: #2C2A25; color: #fff; border-color: #2C2A25; cursor: pointer;
   }
   .pdf-dropzone {
-    border: 2px dashed #E8E4DC;
+    border: 2px dashed #C8C4BC;
     border-radius: 10px;
     padding: 1.5rem;
     text-align: center;
     cursor: pointer;
     transition: border-color 0.15s, background 0.15s;
-    color: #9B9588;
+    color: #4A4640;
   }
   .pdf-dropzone:hover, .pdf-dropzone.dragover {
     border-color: #2C2A25;
@@ -180,15 +180,15 @@
 
   <% if @project_type.in?(%w[construction extension]) %>
     <h2 class="mb-1" style="color: #2C2A25; font-weight: 700;">Décrivez le bien souhaité</h2>
-    <p class="mb-4" style="color: #9B9588;">Renseignez les caractéristiques de votre futur bien.</p>
+    <p class="mb-4" style="color: #4A4640;">Renseignez les caractéristiques de votre futur bien.</p>
   <% else %>
     <h2 class="mb-1" style="color: #2C2A25; font-weight: 700;">Décrivez le bien</h2>
-    <p class="mb-4" style="color: #9B9588;">Importez les infos ou remplissez manuellement.</p>
+    <p class="mb-4" style="color: #4A4640;">Importez les infos ou remplissez manuellement.</p>
   <% end %>
 
   <%# Import modes %>
   <div class="mb-4" data-controller="import-mode">
-    <div class="small fw-semibold mb-2" style="color: #9B9588;">Importer automatiquement <span class="fw-normal">(facultatif)</span></div>
+    <div class="small fw-semibold mb-2" style="color: #4A4640;">Importer automatiquement <span class="fw-normal">(facultatif)</span></div>
     <div class="d-flex gap-2 mb-2">
       <button type="button" class="import-mode-btn flex-fill"
               data-import-mode-target="btn"
@@ -237,7 +237,7 @@
         <div style="font-size: 0.8rem; margin-top: 0.2rem;">
           ou <span style="text-decoration: underline;">cliquez pour choisir un fichier</span>
         </div>
-        <div style="font-size: 0.75rem; color: #9B9588; margin-top: 0.3rem;">PDF uniquement · max 10 Mo</div>
+        <div style="font-size: 0.75rem; color: #4A4640; margin-top: 0.3rem;">PDF uniquement · max 10 Mo</div>
       </div>
 
       <input type="file" accept=".pdf,application/pdf"
@@ -260,7 +260,7 @@
       <%# Analyser button — always visible, disabled until a file is selected %>
       <div class="mt-2">
         <button type="button" disabled
-                style="border-radius: 8px; padding: 0.35rem 0.85rem; font-size: 0.9rem; font-weight: 500; white-space: nowrap; background: #E8E4DC; color: #9B9588; border: 1px solid #E8E4DC; cursor: not-allowed;"
+                style="border-radius: 8px; padding: 0.35rem 0.85rem; font-size: 0.9rem; font-weight: 500; white-space: nowrap; background: #C8C4BC; color: #4A4640; border: 1px solid #C8C4BC; cursor: not-allowed;"
                 data-pdf-upload-target="analyzeBtn"
                 data-action="click->pdf-upload#analyze">
           Analyser ✨
@@ -307,7 +307,7 @@
   <%= form_with model: @project, url: wizard_step1_path, method: :post,
       data: { controller: "wizard-form", action: "input->wizard-form#validate change->wizard-form#validate" } do |f| %>
     <div class="field-section">
-      <div class="small fw-semibold mb-3" style="color: #9B9588;">
+      <div class="small fw-semibold mb-3" style="color: #4A4640;">
         Informations du bien
       </div>
 
