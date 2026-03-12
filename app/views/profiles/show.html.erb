@@ -2,10 +2,10 @@
 <% content_for :head do %>
 <meta name="turbo-cache-control" content="no-cache">
 <style>
-  body { background-color: #FAFAF7; }
+  body { background-color: #FFFFFF; }
   .profile-card {
     background: #fff;
-    border: 1px solid #E8E4DC;
+    border: 1px solid #C8C4BC;
     border-radius: 12px;
     padding: 2rem;
   }
@@ -19,9 +19,9 @@
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
-  .info-row { display: flex; gap: 0.5rem; align-items: baseline; padding: 0.6rem 0; border-bottom: 1px solid #F5F3EF; }
+  .info-row { display: flex; gap: 0.5rem; align-items: baseline; padding: 0.6rem 0; border-bottom: 1px solid #EDEAE4; }
   .info-row:last-child { border-bottom: none; }
-  .info-label { font-size: 0.82rem; color: #9B9588; width: 110px; flex-shrink: 0; }
+  .info-label { font-size: 0.82rem; color: #4A4640; width: 110px; flex-shrink: 0; }
   .info-value { font-size: 0.92rem; color: #2C2A25; }
   .btn-edit {
     background: #2C2A25; color: #fff; border: none;
@@ -43,7 +43,7 @@
         <div style="font-size: 1.3rem; font-weight: 700; color: #2C2A25;">
           <%= @user.full_name.presence || "Mon profil" %>
         </div>
-        <div style="font-size: 0.88rem; color: #9B9588;"><%= @user.email %></div>
+        <div style="font-size: 0.88rem; color: #4A4640;"><%= @user.email %></div>
       </div>
     </div>
     <%= link_to "Modifier", edit_profile_path, class: "btn-edit" %>

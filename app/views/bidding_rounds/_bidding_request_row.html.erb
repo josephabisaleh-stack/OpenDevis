@@ -15,7 +15,7 @@
     <div class="artisan-avatar-sm"><%= bidding_request.artisan.name.first.upcase %></div>
     <div>
       <div style="font-weight: 600; color: #2C2A25; font-size: 0.9rem;"><%= bidding_request.artisan.name %></div>
-      <div style="font-size: 0.8rem; color: #9B9588;">
+      <div style="font-size: 0.8rem; color: #4A4640;">
         <%= bidding_request.artisan.company_name.presence || bidding_request.artisan.postcode %>
         <% if bidding_request.artisan.rating.present? %>
           · ★ <%= bidding_request.artisan.star_rating %>
@@ -30,14 +30,14 @@
       </div>
       <% if bidding_request.artisan_comment.present? %>
         <span title="<%= bidding_request.artisan_comment %>"
-              style="font-size: 0.75rem; color: #9B9588; cursor: help; border-bottom: 1px dashed #9B9588;">
+              style="font-size: 0.75rem; color: #4A4640; cursor: help; border-bottom: 1px dashed #4A4640;">
           💬 commentaire
         </span>
       <% end %>
     <% end %>
     <span class="req-status-badge <%= rc %>"><%= rl %></span>
     <% if bidding_request.responded_at.present? %>
-      <span style="font-size: 0.75rem; color: #9B9588;">
+      <span style="font-size: 0.75rem; color: #4A4640;">
         <%= l(bidding_request.responded_at, format: :short) %>
       </span>
     <% end %>
@@ -45,7 +45,7 @@
       <%= turbo_frame_tag "replace_frame_#{bidding_request.id}" do %>
         <%= link_to "Remplacer",
               select_replacement_project_bidding_round_path(local_project, bidding_request_id: bidding_request.id),
-              style: "font-size: 0.75rem; color: #9B9588; text-decoration: underline;" %>
+              style: "font-size: 0.75rem; color: #4A4640; text-decoration: underline;" %>
       <% end %>
     <% end %>
   </div>

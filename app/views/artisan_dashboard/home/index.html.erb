@@ -3,7 +3,7 @@
   .ad-section-title { font-weight: 700; font-size: 1rem; color: #2C2A25; margin-bottom: 12px; margin-top: 32px; }
   .ad-section-title:first-of-type { margin-top: 0; }
   .ad-request-card {
-    background: #fff; border: 1px solid #E8E4DC; border-radius: 10px; padding: 16px 20px;
+    background: #fff; border: 1px solid #C8C4BC; border-radius: 10px; padding: 16px 20px;
     margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 12px;
     text-decoration: none; color: inherit; transition: border-color 0.12s, box-shadow 0.12s;
   }
@@ -14,19 +14,19 @@
   .badge-sent      { background: #D0E8F5; color: #1A5C80; }
   .badge-responded { background: #D4EDDA; color: #2D6A4F; }
   .badge-declined  { background: #F8D7DA; color: #842029; }
-  .badge-expired   { background: #EDE9E0; color: #6B6560; }
-  .badge-replaced  { background: #EDE9E0; color: #9B9588; }
-  .ad-empty { text-align: center; padding: 32px; background: #fff; border: 1px solid #E8E4DC; border-radius: 10px; color: #9B9588; font-size: 0.9rem; }
+  .badge-expired   { background: #EDE9E0; color: #4A4640; }
+  .badge-replaced  { background: #EDE9E0; color: #4A4640; }
+  .ad-empty { text-align: center; padding: 32px; background: #fff; border: 1px solid #C8C4BC; border-radius: 10px; color: #4A4640; font-size: 0.9rem; }
 </style>
 
 <div class="ad-container">
   <h2 style="font-weight: 700; color: #2C2A25; margin-bottom: 4px;">Bonjour <%= current_artisan.name %> 👋</h2>
-  <p style="color: #9B9588; font-size: 0.9rem; margin-bottom: 32px;">Gérez vos demandes de devis depuis votre tableau de bord.</p>
+  <p style="color: #4A4640; font-size: 0.9rem; margin-bottom: 32px;">Gérez vos demandes de devis depuis votre tableau de bord.</p>
 
   <div class="ad-section-title">
     Demandes en attente
     <% if @pending_requests.any? %>
-      <span style="color: #9B9588; font-weight: 400; font-size: 0.85rem; margin-left: 6px;">(<%= @pending_requests.count %>)</span>
+      <span style="color: #4A4640; font-weight: 400; font-size: 0.85rem; margin-left: 6px;">(<%= @pending_requests.count %>)</span>
     <% end %>
   </div>
 
@@ -35,7 +35,7 @@
       <%= link_to artisan_dashboard_request_path(req), class: "ad-request-card" do %>
         <div>
           <div style="font-weight: 600; color: #2C2A25; margin-bottom: 3px;"><%= req.work_category.name %></div>
-          <div style="font-size: 0.82rem; color: #9B9588;">
+          <div style="font-size: 0.82rem; color: #4A4640;">
             <%= req.bidding_round.project.location_zip %>
             <% if req.bidding_round.project.total_surface_sqm.present? %>
               · <%= req.bidding_round.project.total_surface_sqm.to_i %> m²
@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="d-flex align-items-center gap-2" style="flex-shrink: 0;">
-          <span style="font-size: 0.8rem; color: #9B9588;">
+          <span style="font-size: 0.8rem; color: #4A4640;">
             Limite : <%= req.bidding_round.deadline.strftime("%d/%m/%Y") %>
           </span>
           <span class="ad-status-badge badge-sent">À répondre</span>
@@ -72,7 +72,7 @@
       <%= link_to artisan_dashboard_request_path(req), class: "ad-request-card" do %>
         <div>
           <div style="font-weight: 600; color: #2C2A25; margin-bottom: 3px;"><%= req.work_category.name %></div>
-          <div style="font-size: 0.82rem; color: #9B9588;">
+          <div style="font-size: 0.82rem; color: #4A4640;">
             <%= req.bidding_round.project.location_zip %> · Standing <%= req.bidding_round.standing_label %>
           </div>
         </div>

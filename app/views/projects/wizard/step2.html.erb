@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    border: 1.5px solid #E8E4DC;
+    border: 1.5px solid #C8C4BC;
     border-radius: 10px;
     background: #fff;
     padding: 1rem 1.25rem;
@@ -14,22 +14,22 @@
   }
   .renovation-card:has(input:checked) {
     border-color: #2C2A25;
-    background: #F5F3EF;
+    background: #EDEAE4;
   }
   .renovation-card input[type="radio"] { display: none; }
   .renovation-card .reno-icon { font-size: 1.5rem; width: 2rem; text-align: center; }
-  .renovation-card .reno-desc { font-size: 0.82rem; color: #9B9588; }
+  .renovation-card .reno-desc { font-size: 0.82rem; color: #4A4640; }
 
   .room-picker {
-    border: 1px solid #E8E4DC;
+    border: 1px solid #C8C4BC;
     border-radius: 10px;
     padding: 1.25rem;
-    background: #FAFAF7;
+    background: #FFFFFF;
     margin-top: 0.75rem;
   }
 
   .room-group {
-    border: 1px solid #E8E4DC;
+    border: 1px solid #C8C4BC;
     border-radius: 8px;
     background: #fff;
     margin-bottom: 0.5rem;
@@ -58,7 +58,7 @@
   }
   .room-count-control .btn-count {
     width: 26px; height: 26px;
-    border: 1px solid #E8E4DC;
+    border: 1px solid #C8C4BC;
     border-radius: 6px;
     background: #fff;
     color: #2C2A25;
@@ -81,7 +81,7 @@
   }
 
   .room-instances {
-    border-top: 1px solid #E8E4DC;
+    border-top: 1px solid #C8C4BC;
   }
   .room-instance {
     display: flex;
@@ -105,7 +105,7 @@
   }
   .room-instance-surface input {
     width: 80px;
-    border: 1px solid #E8E4DC;
+    border: 1px solid #C8C4BC;
     border-radius: 6px;
     padding: 0.25rem 0.5rem;
     font-size: 0.85rem;
@@ -119,7 +119,7 @@
   }
   .room-instance-surface span {
     font-size: 0.8rem;
-    color: #9B9588;
+    color: #4A4640;
   }
 
   .field-error {
@@ -144,7 +144,7 @@
   <%= render "stepper", current_step: 2 %>
 
   <h2 class="mb-1" style="color: #2C2A25; font-weight: 700;">Type de rénovation</h2>
-  <p class="mb-4" style="color: #9B9588;">Sélectionnez le type de travaux envisagés.</p>
+  <p class="mb-4" style="color: #4A4640;">Sélectionnez le type de travaux envisagés.</p>
 
   <%= form_with url: wizard_step2_path, method: :post,
       data: { controller: "renovation-type", action: "change->renovation-type#validate" } do |f| %>
@@ -167,7 +167,7 @@
     <%# Room picker — visible for "par_piece" %>
     <div data-renovation-type-target="roomPicker"
          class="room-picker" <%= @renovation_type == "par_piece" ? "" : "hidden" %>>
-      <div class="small fw-semibold mb-2" style="color: #9B9588;">
+      <div class="small fw-semibold mb-2" style="color: #4A4640;">
         Quelles pièces rénover ? <span style="color: #C25E4A;">*</span>
       </div>
 

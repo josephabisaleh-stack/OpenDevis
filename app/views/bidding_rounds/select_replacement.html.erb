@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "replace_frame_#{@bidding_request.id}" do %>
-  <div style="background: #FAFAF7; border: 1px solid #E8E4DC; border-radius: 8px; padding: 12px 16px; min-width: 280px;">
+  <div style="background: #FFFFFF; border: 1px solid #C8C4BC; border-radius: 8px; padding: 12px 16px; min-width: 280px;">
     <% if @available_artisans.any? %>
       <%= form_with url: replace_artisan_project_bidding_round_path(@project), method: :post,
             style: "display: flex; flex-direction: column; gap: 8px;" do |f| %>
@@ -8,7 +8,7 @@
           Choisir un remplaçant
         </div>
         <select name="new_artisan_id" required
-                style="font-size: 0.82rem; border: 1px solid #E8E4DC; border-radius: 6px; padding: 6px 8px; background: #fff;">
+                style="font-size: 0.82rem; border: 1px solid #C8C4BC; border-radius: 6px; padding: 6px 8px; background: #fff;">
           <% @available_artisans.each do |artisan| %>
             <option value="<%= artisan.id %>">
               <%= artisan.name %>
@@ -24,15 +24,15 @@
             Confirmer
           </button>
           <%= link_to "Annuler", project_bidding_round_path(@project),
-                style: "font-size: 0.8rem; color: #9B9588; text-decoration: none; padding: 5px 0;" %>
+                style: "font-size: 0.8rem; color: #4A4640; text-decoration: none; padding: 5px 0;" %>
         </div>
       <% end %>
     <% else %>
-      <div style="font-size: 0.82rem; color: #9B9588;">
+      <div style="font-size: 0.82rem; color: #4A4640;">
         Aucun artisan disponible pour ce remplacement.
       </div>
       <%= link_to "Fermer", project_bidding_round_path(@project),
-            style: "font-size: 0.8rem; color: #9B9588; text-decoration: underline;" %>
+            style: "font-size: 0.8rem; color: #4A4640; text-decoration: underline;" %>
     <% end %>
   </div>
 <% end %>

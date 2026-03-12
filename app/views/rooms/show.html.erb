@@ -9,8 +9,8 @@
     font-size: 0.88rem;
     font-weight: 500;
     text-decoration: none;
-    border: 1.5px solid #E8E4DC;
-    color: #6B6560;
+    border: 1.5px solid #C8C4BC;
+    color: #4A4640;
     background: #fff;
     transition: border-color 0.12s, background 0.12s, color 0.12s;
     white-space: nowrap;
@@ -21,27 +21,27 @@
   .items-table th {
     font-size: 0.78rem;
     font-weight: 700;
-    color: #9B9588;
+    color: #4A4640;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    border-bottom: 1px solid #E8E4DC;
+    border-bottom: 1px solid #C8C4BC;
     padding: 0.6rem 0.75rem;
-    background: #FAFAF7;
+    background: #FFFFFF;
   }
   .items-table td {
     font-size: 0.9rem;
     color: #2C2A25;
     padding: 0.75rem;
-    border-bottom: 1px solid #F5F3EF;
+    border-bottom: 1px solid #EDEAE4;
     vertical-align: middle;
   }
   .items-table tr:last-child td { border-bottom: none; }
-  .items-table tbody tr:hover td { background: #FAFAF7; }
+  .items-table tbody tr:hover td { background: #FFFFFF; }
   .total-row td {
     font-weight: 700;
     color: #2C2A25;
-    background: #F5F3EF;
-    border-top: 2px solid #E8E4DC;
+    background: #EDEAE4;
+    border-top: 2px solid #C8C4BC;
   }
 </style>
 <% end %>
@@ -51,7 +51,7 @@
   <%# ── Back link ───────────────────────────────────────────────────────── %>
   <%= link_to "← #{@room.project.location_zip.presence || "Projet"}",
         @room.project,
-        style: "color: #9B9588; font-size: 0.85rem; text-decoration: none;" %>
+        style: "color: #4A4640; font-size: 0.85rem; text-decoration: none;" %>
 
   <%# ── Room tabs ───────────────────────────────────────────────────────── %>
   <% if @all_rooms.size > 1 %>
@@ -73,7 +73,7 @@
         <h2 style="font-size: 1.3rem; font-weight: 700; color: #2C2A25; margin: 0;">
           <%= @room.name %>
         </h2>
-        <div style="font-size: 0.85rem; color: #9B9588; margin-top: 3px;">
+        <div style="font-size: 0.85rem; color: #4A4640; margin-top: 3px;">
           <% dim = [@room.surface_sqm&.then { |v| "#{v.to_i} m²" },
                     @room.perimeter_lm&.then { |v| "périmètre #{v} ml" },
                     @room.wall_height_m&.then { |v| "h. #{v} m" }].compact %>
@@ -95,7 +95,7 @@
         }
       %>
       <div class="table-responsive">
-        <table class="w-100 items-table" style="border-collapse: collapse; border: 1px solid #E8E4DC; border-radius: 10px; overflow: hidden;">
+        <table class="w-100 items-table" style="border-collapse: collapse; border: 1px solid #C8C4BC; border-radius: 10px; overflow: hidden;">
           <thead>
             <tr>
               <th>Désignation</th>
@@ -113,7 +113,7 @@
               <tr>
                 <td><%= item.label %></td>
                 <td>
-                  <span style="font-size: 0.8rem; background: #EDE9E0; color: #6B6560;
+                  <span style="font-size: 0.8rem; background: #EDE9E0; color: #4A4640;
                         border-radius: 20px; padding: 0.2em 0.6em;">
                     <%= item.work_category&.name %>
                   </span>
@@ -137,7 +137,7 @@
                         style: "text-decoration: none; font-size: 0.9rem;" %>
                   <%= button_to "✕", item, method: :delete,
                         data: { turbo_confirm: "Supprimer ce poste ?" },
-                        style: "background: none; border: none; color: #9B9588; cursor: pointer; font-size: 0.9rem; padding: 0;" %>
+                        style: "background: none; border: none; color: #4A4640; cursor: pointer; font-size: 0.9rem; padding: 0;" %>
                 </td>
               </tr>
             <% end %>
@@ -148,7 +148,7 @@
               <td class="text-end">
                 <%= number_to_currency(room_total_ht, unit: "€", format: "%n %u",
                       separator: ",", delimiter: "\u202F") %>
-                <div style="font-size: 0.75rem; font-weight: 400; color: #9B9588;">
+                <div style="font-size: 0.75rem; font-weight: 400; color: #4A4640;">
                   TTC:
                   <%= number_to_currency(room_total_ttc, unit: "€", format: "%n %u",
                         separator: ",", delimiter: "\u202F") %>
@@ -161,8 +161,8 @@
       </div>
     <% else %>
       <div class="text-center py-5"
-           style="border: 1px solid #E8E4DC; border-radius: 10px; background: #fff;">
-        <div style="color: #9B9588; font-size: 0.9rem; margin-bottom: 1rem;">
+           style="border: 1px solid #C8C4BC; border-radius: 10px; background: #fff;">
+        <div style="color: #4A4640; font-size: 0.9rem; margin-bottom: 1rem;">
           Aucun poste de travaux pour cette pièce.
         </div>
         <%= link_to "+ Ajouter le premier poste", new_room_work_item_path(@room),

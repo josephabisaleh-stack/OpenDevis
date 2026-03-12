@@ -1,7 +1,7 @@
 <% content_for :head do %>
 <style>
   .recap-block {
-    border: 1px solid #E8E4DC;
+    border: 1px solid #C8C4BC;
     border-radius: 10px;
     background: #fff;
     padding: 1.25rem 1.5rem;
@@ -10,14 +10,14 @@
   .recap-block-title {
     font-size: 0.8rem;
     font-weight: 700;
-    color: #9B9588;
+    color: #4A4640;
     text-transform: uppercase;
     letter-spacing: 0.03em;
     margin-bottom: 0.75rem;
   }
   .recap-row { display: flex; gap: 2rem; flex-wrap: wrap; }
   .recap-item { font-size: 0.9rem; }
-  .recap-item .ri-label { color: #9B9588; font-size: 0.8rem; }
+  .recap-item .ri-label { color: #4A4640; font-size: 0.8rem; }
   .recap-item .ri-value { color: #2C2A25; font-weight: 500; }
 
   .cat-chip {
@@ -49,7 +49,7 @@
   }
   .room-recap-surface {
     font-size: 0.82rem;
-    color: #9B9588;
+    color: #4A4640;
   }
   .room-recap-cats {
     padding-left: 0.25rem;
@@ -84,7 +84,7 @@ reno_labels = {
   <%= render "stepper", current_step: 4, project_type: @project_type %>
 
   <h2 class="mb-1" style="color: #2C2A25; font-weight: 700;">Récapitulatif</h2>
-  <p class="mb-4" style="color: #9B9588;">Vérifiez vos choix avant de générer l'estimation.</p>
+  <p class="mb-4" style="color: #4A4640;">Vérifiez vos choix avant de générer l'estimation.</p>
 
   <%# Property info block %>
   <div class="recap-block">
@@ -136,7 +136,7 @@ reno_labels = {
       <%= @project_type.in?(%w[construction extension]) ? reno_labels[@project_type] : (reno_labels[@renovation_type] || "—") %>
     </div>
     <% if @renovation_type == "par_piece" && @selected_rooms.any? %>
-      <div class="small mt-1" style="color: #9B9588;">
+      <div class="small mt-1" style="color: #4A4640;">
         <%= @selected_rooms.size %> pièce<%= @selected_rooms.size > 1 ? "s" : "" %> sélectionnée<%= @selected_rooms.size > 1 ? "s" : "" %>
       </div>
     <% end %>
@@ -167,7 +167,7 @@ reno_labels = {
                 <% end %>
               <% end %>
             <% else %>
-              <span class="small" style="color: #9B9588;">Aucun travaux sélectionné</span>
+              <span class="small" style="color: #4A4640;">Aucun travaux sélectionné</span>
             <% end %>
           </div>
         </div>

@@ -1,10 +1,10 @@
 <% content_for :title, "Mon profil — OpenDevis" %>
 <% content_for :head do %>
 <style>
-  body { background-color: #FAFAF7; }
+  body { background-color: #FFFFFF; }
   .profile-card {
     background: #fff;
-    border: 1px solid #E8E4DC;
+    border: 1px solid #C8C4BC;
     border-radius: 12px;
     padding: 2rem;
   }
@@ -20,11 +20,11 @@
   }
   .form-label { font-size: 0.88rem; font-weight: 500; color: #2C2A25; margin-bottom: 0.3rem; }
   .form-control {
-    border: 1px solid #E8E4DC;
+    border: 1px solid #C8C4BC;
     border-radius: 8px;
     font-size: 0.92rem;
     color: #2C2A25;
-    background: #FAFAF7;
+    background: #FFFFFF;
     padding: 0.5rem 0.75rem;
   }
   .form-control:focus {
@@ -52,7 +52,7 @@
       <div style="font-size: 1.3rem; font-weight: 700; color: #2C2A25;">
         <%= @user.full_name.presence || "Mon profil" %>
       </div>
-      <div style="font-size: 0.88rem; color: #9B9588;"><%= @user.email %></div>
+      <div style="font-size: 0.88rem; color: #4A4640;"><%= @user.email %></div>
     </div>
   </div>
 
@@ -84,7 +84,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <%= link_to "Annuler", profile_path,
-            style: "font-size: 0.88rem; color: #9B9588; text-decoration: none;" %>
+            style: "font-size: 0.88rem; color: #4A4640; text-decoration: none;" %>
       <%= f.submit "Enregistrer", class: "btn-save" %>
     </div>
   <% end %>

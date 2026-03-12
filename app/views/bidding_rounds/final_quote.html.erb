@@ -1,7 +1,7 @@
 <% content_for :head do %>
 <style>
   .fq-card {
-    border: 1px solid #E8E4DC;
+    border: 1px solid #C8C4BC;
     border-radius: 10px;
     background: #fff;
     overflow: hidden;
@@ -9,8 +9,8 @@
   }
   .fq-card-header {
     padding: 14px 20px;
-    background: #FAFAF7;
-    border-bottom: 1px solid #E8E4DC;
+    background: #FFFFFF;
+    border-bottom: 1px solid #C8C4BC;
     font-weight: 700;
     color: #2C2A25;
     display: flex;
@@ -19,7 +19,7 @@
   }
   .fq-row {
     padding: 16px 20px;
-    border-bottom: 1px solid #F5F3EF;
+    border-bottom: 1px solid #EDEAE4;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,7 +34,7 @@
     margin-left: 8px;
   }
   .summary-stat {
-    border: 1px solid #E8E4DC;
+    border: 1px solid #C8C4BC;
     border-radius: 10px;
     padding: 20px 24px;
     text-align: center;
@@ -47,12 +47,12 @@
 
 <div class="container py-4" style="max-width: 1000px;">
   <%= link_to "← Retour au projet", project_path(@project),
-        style: "color: #9B9588; text-decoration: none; font-size: 0.9rem;" %>
+        style: "color: #4A4640; text-decoration: none; font-size: 0.9rem;" %>
 
   <div class="d-flex justify-content-between align-items-start mt-3 mb-4 flex-wrap gap-2">
     <div>
       <h2 class="mb-1" style="font-weight: 700; color: #2C2A25;">Devis artisans finalisé</h2>
-      <div style="color: #9B9588; font-size: 0.9rem;">
+      <div style="color: #4A4640; font-size: 0.9rem;">
         Niveau : <strong style="color: #2C2A25;"><%= @bidding_round.standing_label %></strong>
         · <%= @final_selections.count %> catégorie<%= @final_selections.count > 1 ? "s" : "" %>
       </div>
@@ -74,7 +74,7 @@
     </div>
     <div class="col-md-4">
       <div class="summary-stat">
-        <div class="stat-label" style="color: #9B9588;">Estimation initiale HT</div>
+        <div class="stat-label" style="color: #4A4640;">Estimation initiale HT</div>
         <div class="stat-amount" style="color: #2C2A25;">
           <%= number_to_currency(@original_estimate, unit: "€", format: "%n %u", separator: ",", delimiter: "\u202F") %>
         </div>
@@ -83,7 +83,7 @@
     <div class="col-md-4">
       <div class="summary-stat">
         <% diff = @total_artisan_price - @original_estimate.to_f %>
-        <div class="stat-label" style="color: #9B9588;">Écart</div>
+        <div class="stat-label" style="color: #4A4640;">Écart</div>
         <div class="stat-amount" style="color: <%= diff > 0 ? "#842029" : "#2D6A4F" %>;">
           <%= diff >= 0 ? "+" : "" %><%= number_to_currency(diff, unit: "€", format: "%n %u", separator: ",", delimiter: "\u202F") %>
         </div>
@@ -104,7 +104,7 @@
               <span class="ai-badge">Recommandé</span>
             <% end %>
           </div>
-          <div style="font-size: 0.82rem; color: #9B9588;">
+          <div style="font-size: 0.82rem; color: #4A4640;">
             <%= sel.artisan.name %>
             <% if sel.artisan.company_name.present? %>
               · <%= sel.artisan.company_name %>
