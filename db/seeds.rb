@@ -335,7 +335,45 @@ artisan_data = [
   # Chauffage
   { name: "Frédéric Marin", email: "f.marin@marin-chauffage.fr", company_name: "Marin Chauffage",
     postcode: "75015", phone: "06 55 88 22 66", rating: 4.8, certifications: "RGE, Qualibat",
-    categories: ["chauffage"] }
+    categories: ["chauffage"] },
+
+  # Plomberie (additional)
+  { name: "Julien Fontaine", email: "j.fontaine@fontaine-plomberie.fr", company_name: "Fontaine Plomberie",
+    postcode: "75007", phone: "06 12 34 56 78", rating: 4.6, certifications: "RGE, Qualibat",
+    categories: ["plomberie"] },
+  { name: "Hassan Ouali", email: "h.ouali@ouali-sanitaire.fr", company_name: "Ouali Sanitaire",
+    postcode: "93100", phone: "06 23 45 67 89", rating: 4.4, certifications: "Qualibat",
+    categories: ["plomberie", "carrelage"] },
+
+  # Électricité (additional)
+  { name: "Damien Chevalier", email: "d.chevalier@chevalier-elec.fr", company_name: "Chevalier Électricité",
+    postcode: "75020", phone: "06 34 56 78 90", rating: 4.7, certifications: "Qualifelec",
+    categories: ["electricite"] },
+
+  # Menuiserie (additional)
+  { name: "Luca Ferrari", email: "l.ferrari@ferrari-bois.fr", company_name: "Ferrari Bois & Menuiserie",
+    postcode: "75013", phone: "06 45 67 89 01", rating: 4.5, certifications: "Qualibois",
+    categories: ["menuiserie", "peinture"] },
+
+  # Peinture (additional)
+  { name: "Émilie Blanc", email: "e.blanc@blanc-deco.fr", company_name: "Blanc Décoration",
+    postcode: "75006", phone: "06 56 78 90 12", rating: 4.9, certifications: nil,
+    categories: ["peinture"] },
+
+  # Carrelage (additional)
+  { name: "Mohamed Azzouzi", email: "m.azzouzi@azzouzi-carrelage.fr", company_name: "Azzouzi Carrelage",
+    postcode: "92200", phone: "06 67 89 01 23", rating: 4.3, certifications: "Qualibat",
+    categories: ["carrelage"] },
+
+  # Isolation (additional)
+  { name: "Paul Renard", email: "p.renard@renard-isolation.fr", company_name: "Renard Isolation Thermique",
+    postcode: "78000", phone: "06 78 90 12 34", rating: 4.8, certifications: "RGE",
+    categories: ["isolation", "chauffage"] },
+
+  # Chauffage (additional)
+  { name: "Sophie Mercier", email: "s.mercier@mercier-thermique.fr", company_name: "Mercier Thermique",
+    postcode: "75014", phone: "06 89 01 23 45", rating: 4.6, certifications: "RGE, Qualibat",
+    categories: ["chauffage", "plomberie"] }
 ]
 
 artisan_data.each do |ad|
